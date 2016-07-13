@@ -1,0 +1,10 @@
+    <%= form_for(@article) do |f| %>
+        <% @article.errors.full_messages.each do |message| %>
+            <div>
+                *<%= message%>
+            </div>
+        <%end%>
+        <%= f.text_field :title, placeholder: "Titulo"%>
+        <%= f.text_area :body, placeholder: "Escriba su articulo aqui"%>
+        <%= f.submit "Guardar", class:"btn waves-effect waves-light"%>
+    <%end%>    
