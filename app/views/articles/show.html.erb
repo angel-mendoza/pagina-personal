@@ -1,5 +1,11 @@
  <div class="col s12 m12 l12">
+  <% unless @article.user.nil? %>
     <h3><%= @article.title%></h3>
+    <h5>escrito por: <%= @article.user.email %></h5>
+  <%end%>
+  <p>
+   visitas: <%= @article.visits_count %>
+  </p>
     <%= @article.body%>
      <%= link_to "Editar", edit_article_path(@article), class:"btn waves-effect waves-light"%>
  </div>
