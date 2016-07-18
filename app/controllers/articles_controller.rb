@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-    before_action :autehenticate_user!, except: [:show, :index] 
+    before_action :authenticate_user!, except: [:show, :index] 
     before_action :set_article, except: [:index, :new, :create]
     def index
         @articles = Article.all 
@@ -7,6 +7,7 @@ class ArticlesController < ApplicationController
     
     def show
        @article.update_visits_count
+       @comment = Comment.new
     end
     
     def new
@@ -47,6 +48,6 @@ class ArticlesController < ApplicationController
     end
     
     def article_params
-        params.require(:article).permit(:title, :body)
+        params.require(:article).permit(:title, :body, :cover)
     end
 end

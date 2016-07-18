@@ -1,6 +1,7 @@
  <div class="col s12 m12 l12">
   <% unless @article.user.nil? %>
     <h3><%= @article.title%></h3>
+    <%= image_tag @article.cover.url() %>
     <h5>escrito por: <%= @article.user.email %></h5>
   <%end%>
   <p>
@@ -8,4 +9,20 @@
   </p>
     <%= @article.body%>
      <%= link_to "Editar", edit_article_path(@article), class:"btn waves-effect waves-light"%>
+ </div>
+ <div>
+  <h3>Comentarios:</h3>
+  <div>
+   <ul id="comments-box">
+    <% @article.comments.each do |comment| %>
+    <li>
+     <%= comment.body %>
+    </li>
+    <li>
+     <p>Escrito por: </p><%= comment.user.email %> 
+    </li>
+    <%end%>
+   </ul>
+  </div>
+  <%= render "comments/form" %>
  </div>
